@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import parasImage from "../assets/paras.jpeg";
-import "./about.css";
+import "./About.css";
 
 function About() {
   return (
