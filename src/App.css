@@ -1,0 +1,237 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #0f0f0f;
+  color: white;
+  
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 40px;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  color: #00ffcc;
+}
+
+.nav-contact {
+  font-size: 14px;
+  color: #aaa;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+.search {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px;
+  border-radius: 6px;
+  border: none;
+  margin-bottom: 30px;
+}
+
+/* CATEGORIES */
+.categories {
+  margin-bottom: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;   /* center buttons */
+  gap: 10px;
+}
+
+.categories button {
+  margin: 5px;
+  padding: 8px 15px;
+  border-radius: 20px;
+  border: 1px solid #333;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.categories button:hover {
+  background: #222;
+}
+
+.categories .active {
+  background: #00ffcc;
+  color: black;
+  border: none;
+}
+
+.product-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.page-wrapper {
+  width: 100%;
+  max-width: 1200px;   
+}
+
+.contact-box {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.contact-btn {
+  display: inline-block;
+  padding: 8px 15px;
+  background: #25D366;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.call-btn {
+  padding: 8px 14px;
+  background-color: #333;
+  border-radius: 8px;
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.call-btn:hover {
+  background-color: #00ffcc;
+  color: black;
+}
+
+.contact-btn:hover {
+  background: #1ebe5d;
+}
+
+.description {
+  color: #aaa;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* CARD */
+.card {
+  background: #1a1a1a;
+  border-radius: 18px;
+  padding: 0;
+  transition: 0.3s ease;
+  border: 1px solid #222;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  overflow: hidden;
+}
+
+.card img {
+  width: 100%;
+  height: 220px;
+  object-fit: contain;
+  background: #111;
+  padding: 15px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: none;
+  background: #222;
+  color: white;
+}
+
+.filter-bar {
+  width: 100%;
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.filter-bar input,
+.filter-bar select {
+  flex: 1;
+  min-width: 200px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  background: #1f1f1f;
+  color: white;
+  font-size: 14px;
+}
+
+.card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  background: #111;
+  padding: 10px;
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.card-content h3 {
+  margin: 0 0 10px;
+}
+
+.card-content p {
+  color: #aaa;
+  font-size: 14px;
+}
+
+/* BUTTON */
+.btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 15px;
+  background: #00ffcc;
+  color: black;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #00ddb3;
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 20px;
+  background: #111;
+  margin-top: 50px;
+  font-size: 14px;
+  color: #777;
+}
+
+#root {
+  width: 100%;
+}

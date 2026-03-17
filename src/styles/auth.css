@@ -1,0 +1,89 @@
+.auth-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-image: url("../assets/car-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Dark overlay */
+.auth-container::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,0.6);
+}
+
+/* Glass card */
+.auth-card {
+  position: relative;
+  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.1);
+  padding: 45px;
+  width: 380px;
+  border-radius: 12px;
+  color: white;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+  text-align: center;
+}
+
+.auth-card h2 {
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+.auth-input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: none;
+  font-size: 14px;
+
+  background: rgba(255,255,255,0.9);
+  color: black;
+}
+
+.auth-input::placeholder {
+  color: #666;
+}
+
+.auth-input:focus {
+  outline: none;
+  background: white;
+}
+
+/* Button */
+.auth-button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 6px;
+  border: none;
+  background: #ff6b00;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.auth-button:hover {
+  background: #ff8126;
+  transform: translateY(-2px);
+}
+
+/* Link section */
+.auth-link {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.auth-link a {
+  color: #ffa94d;
+  text-decoration: none;
+  font-weight: bold;
+}
