@@ -12,7 +12,7 @@ exports.createProduct = async (req, res) => {
       stock,
       category,
       description,
-      image: req.file ? req.file.path : null,
+      image: req.file ? req.file.path : ""
     });
 
     res.status(201).json(product);
