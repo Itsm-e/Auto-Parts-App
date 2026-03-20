@@ -47,35 +47,23 @@ function AdminDashboard() {
 
   const addProduct = async () => {
   try {
-
     const formData = new FormData();
 
     Object.keys(form).forEach((key) => {
-
-      if (form[key] !== null && form[key] !== "") {
-        formData.append(key, form[key]);
-      }
-
+      formData.append(key, form[key]);
     });
 
-    const res = await API.post("/products", formData, {
+    await API.post("/products", formData, {
       headers: {
-        Authorization: `Bearer ${token}`
-      }
+        "Content-Type": "multipart/form-data",
+      },
     });
 
-    console.log("Product Added:", res.data);
-
-    fetchProducts();
-
-    resetForm();
+    alert("Product added successfully");
 
   } catch (error) {
-
-    console.error(error);
-
-    alert(error.response?.data?.message || "Add failed");
-
+    console.log(error);
+    alert("Error adding product");
   }
 };
 
@@ -149,8 +137,10 @@ function AdminDashboard() {
         />
 
         <input
+          input
           type="file"
-          onChange={(e) => setForm({ ...form, image: e.target.files[0] })}
+          onChange={(e) =>
+          setForm({ ...form, image: e.target.files[0] })}
           className="mt-4"
         />
 

@@ -3,22 +3,34 @@ const Product = require("../models/product");
 // Create Product
 exports.createProduct = async (req, res) => {
   try {
-    const { name, brand, price, stock, category, description } = req.body;
+    const { name, brand, category, price, stock, description } = req.body;
 
-    const product = await Product.create({
+    // ✅ Safe image handling
+    const image = req.file ? req.file.path : "";
+
+    const product = new Product({
       name,
       brand,
+      category,
       price,
       stock,
-      category,
       description,
-      image: req.file ? req.file.path : ""
+      image,
     });
 
-    res.status(201).json(product);
+    await product.save();
+
+    res.status(201).json({
+      message: "Product created successfully",
+      product,
+    });
+
   } catch (error) {
-    console.error("CREATE PRODUCT ERROR:", error);
-    res.status(500).json({ message: error.message });
+    console.error("CREATE PRODUCT ERROR:", error); // 🔥 VERY IMPORTANT
+    res.status(500).json({
+      message: "Error creating product",
+      error: error.message,
+    });
   }
 };
 
