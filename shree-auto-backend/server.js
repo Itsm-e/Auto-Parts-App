@@ -7,6 +7,8 @@ const cors = require("cors");
 const productRoutes = require("./routes/productRoutes");
 const authRoutes = require("./routes/authRoutes");
 
+const PORT = process.env.PORT || 5000;
+
 
 const app = express();
 
@@ -27,12 +29,19 @@ app.get("/", (req, res) => {
   });
 });
 
+// Debug env
+console.log("ENV CHECK:");
+console.log("MONGO_URI:", process.env.MONGO_URI ? "FOUND" : "MISSING");
+console.log("CLOUD_NAME:", process.env.CLOUD_NAME ? "FOUND" : "MISSING");
+console.log("API_KEY:", process.env.API_KEY ? "FOUND" : "MISSING");
+
 // Database connection
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected"))
   .catch(err => console.log(err));
 
 // Start server
-app.listen(process.env.PORT, () =>
-  console.log(`Server running on port ${process.env.PORT}`)
+
+app.listen(PORT, () =>
+  console.log(`Server running on port ${PORT}`)
 );
