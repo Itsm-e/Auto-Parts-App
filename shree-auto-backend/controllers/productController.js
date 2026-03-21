@@ -1,35 +1,45 @@
 const Product = require("../models/product");
 
 // Create Product
-exports.createProduct = async (req, res) => {
+const createProduct = async (req, res) => {
   try {
-    const { name, brand, category, price, stock, description } = req.body;
+    console.log("BODY:", req.body);
+    console.log("FILE:", req.file);
 
-    // ✅ Safe image handling
-    const image = req.file ? req.file.path : "";
+    const { name, price, category, description } = req.body;
+
+    if (!req.file) {
+      return res.status(400).json({
+        message: "Image file missing"
+      });
+    }
+
+    const cloudinary = require("../config/cloudinary");
+
+    const result = await cloudinary.uploader.upload(
+      req.file.path
+    );
+
+    const Product = require("../models/product");
 
     const product = new Product({
       name,
-      brand,
-      category,
       price,
-      stock,
+      category,
       description,
-      image,
+      image: result.secure_url
     });
 
     await product.save();
 
-    res.status(201).json({
-      message: "Product created successfully",
-      product,
-    });
+    res.status(201).json(product);
 
   } catch (error) {
-    console.error("CREATE PRODUCT ERROR:", error); // 🔥 VERY IMPORTANT
+    console.error("CREATE PRODUCT ERROR:", error);
+
     res.status(500).json({
-      message: "Error creating product",
-      error: error.message,
+      message: "Product creation failed",
+      error: error.message
     });
   }
 };
