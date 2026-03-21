@@ -1,7 +1,7 @@
 const Product = require("../models/product");
 
 // Create Product
-const createProduct = async (req, res) => {
+exports.createProduct = async (req, res) => {
   try {
     console.log("BODY:", req.body);
     console.log("FILE:", req.file);
@@ -19,8 +19,6 @@ const createProduct = async (req, res) => {
     const result = await cloudinary.uploader.upload(
       req.file.path
     );
-
-    const Product = require("../models/product");
 
     const product = new Product({
       name,
