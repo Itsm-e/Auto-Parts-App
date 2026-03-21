@@ -33,13 +33,14 @@ exports.createProduct = async (req, res) => {
     res.status(201).json(product);
 
   } catch (error) {
-    console.error("CREATE PRODUCT ERROR:", error);
+  console.error("CREATE PRODUCT ERROR:");
+  console.error(error);
 
-    res.status(500).json({
-      message: "Product creation failed",
-      error: error.message
-    });
-  }
+  res.status(500).json({
+    message: "Product creation failed",
+    error: error.message
+  });
+}
 };
 
 // Get All Products

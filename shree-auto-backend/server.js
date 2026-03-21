@@ -38,7 +38,7 @@ console.log("API_KEY:", process.env.API_KEY ? "FOUND" : "MISSING");
 // Database connection
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected"))
-  .catch(err => console.log(err));
+  .catch(err => console.log("Mongo Error:", err));
 
 // Start server
 
