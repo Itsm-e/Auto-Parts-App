@@ -14,18 +14,12 @@ exports.createProduct = async (req, res) => {
       });
     }
 
-    const cloudinary = require("../config/cloudinary");
-
-    const result = await cloudinary.uploader.upload(
-      req.file.path
-    );
-
     const product = new Product({
       name,
       price,
       category,
       description,
-      image: result.secure_url
+      image: req.file.path   // ✅ Cloudinary URL
     });
 
     await product.save();
@@ -33,14 +27,13 @@ exports.createProduct = async (req, res) => {
     res.status(201).json(product);
 
   } catch (error) {
-  console.error("CREATE PRODUCT ERROR:");
-  console.error(error);
+    console.error("CREATE PRODUCT ERROR:", error);
 
-  res.status(500).json({
-    message: "Product creation failed",
-    error: error.message
-  });
-}
+    res.status(500).json({
+      message: "Product creation failed",
+      error: error.message
+    });
+  }
 };
 
 // Get All Products
