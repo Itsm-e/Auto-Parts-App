@@ -6,7 +6,13 @@ exports.createProduct = async (req, res) => {
     console.log("BODY:", req.body);
     console.log("FILE:", req.file);
 
-    const { name, price, category, description } = req.body;
+    const {
+      name,
+      brand,
+      stock,
+      category,
+      description
+    } = req.body;
 
     if (!req.file) {
       return res.status(400).json({
@@ -16,10 +22,11 @@ exports.createProduct = async (req, res) => {
 
     const product = new Product({
       name,
-      price,
+      brand,
+      stock,
       category,
       description,
-      image: req.file.path   // ✅ Cloudinary URL
+      image: req.file.path   // Cloudinary URL
     });
 
     await product.save();
