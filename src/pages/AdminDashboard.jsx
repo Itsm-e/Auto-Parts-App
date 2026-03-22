@@ -50,19 +50,24 @@ function AdminDashboard() {
 
     const formData = new FormData();
 
-    Object.keys(form).forEach((key) => {
-      formData.append(key, form[key]);
-    });
+    // append text fields
+    formData.append("name", form.name);
+    formData.append("brand", form.brand);
+    formData.append("stock", form.stock);
+    formData.append("category", form.category);
+    formData.append("description", form.description);
 
-    // ✅ Get token from localStorage
+    // ✅ append image separately
+    formData.append("image", form.image);
+
     const token = localStorage.getItem("token");
 
-    console.log("TOKEN:", token); // debug
+    console.log("TOKEN:", token);
+    console.log("IMAGE:", form.image);
 
     await API.post("/products", formData, {
       headers: {
-        Authorization: `Bearer ${token}`,  // ⭐ VERY IMPORTANT
-        "Content-Type": "multipart/form-data",
+        Authorization: `Bearer ${token}`,
       },
     });
 
@@ -70,12 +75,12 @@ function AdminDashboard() {
 
   } catch (error) {
 
-    console.log("ERROR:", error.response?.data);
-
-    alert(
-      error.response?.data?.message ||
-      "Error adding product"
+    console.log(
+      "ERROR:",
+      error.response?.data || error.message
     );
+
+    alert("Error adding product");
   }
 };
 
@@ -152,7 +157,11 @@ function AdminDashboard() {
           input
           type="file"
           onChange={(e) =>
-          setForm({ ...form, image: e.target.files[0] })}
+          setForm({
+      ...form,
+      image: e.target.files[0]   // ⭐ REQUIRED
+    })
+  }
           className="mt-4"
         />
 
