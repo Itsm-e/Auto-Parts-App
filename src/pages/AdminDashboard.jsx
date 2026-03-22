@@ -53,8 +53,12 @@ function AdminDashboard() {
       formData.append(key, form[key]);
     });
 
+    // ✅ Get token
+    const token = localStorage.getItem("token");
+
     await API.post("/products", formData, {
       headers: {
+        Authorization: `Bearer ${token}`,  // ✅ FIX
         "Content-Type": "multipart/form-data",
       },
     });
@@ -62,7 +66,7 @@ function AdminDashboard() {
     alert("Product added successfully");
 
   } catch (error) {
-    console.log(error);
+    console.log(error.response?.data || error);
     alert("Error adding product");
   }
 };
