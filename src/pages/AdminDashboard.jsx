@@ -47,18 +47,21 @@ function AdminDashboard() {
 
   const addProduct = async () => {
   try {
+
     const formData = new FormData();
 
     Object.keys(form).forEach((key) => {
       formData.append(key, form[key]);
     });
 
-    // ✅ Get token
+    // ✅ Get token from localStorage
     const token = localStorage.getItem("token");
+
+    console.log("TOKEN:", token); // debug
 
     await API.post("/products", formData, {
       headers: {
-        Authorization: `Bearer ${token}`,  // ✅ FIX
+        Authorization: `Bearer ${token}`,  // ⭐ VERY IMPORTANT
         "Content-Type": "multipart/form-data",
       },
     });
@@ -66,8 +69,13 @@ function AdminDashboard() {
     alert("Product added successfully");
 
   } catch (error) {
-    console.log(error.response?.data || error);
-    alert("Error adding product");
+
+    console.log("ERROR:", error.response?.data);
+
+    alert(
+      error.response?.data?.message ||
+      "Error adding product"
+    );
   }
 };
 
