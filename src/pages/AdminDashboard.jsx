@@ -11,7 +11,6 @@ function AdminDashboard() {
   const [form, setForm] = useState({
     name: "",
     brand: "",
-    price: "",
     stock: "",
     category: "",
     description: "",
