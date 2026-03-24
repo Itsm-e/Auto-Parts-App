@@ -11,7 +11,7 @@ function AdminDashboard() {
   const [form, setForm] = useState({
     name: "",
     brand: "",
-    stock: Number(stock),
+    stock: "",
     category: "",
     description: "",
     image: null,
@@ -49,9 +49,12 @@ function AdminDashboard() {
 
     const formData = new FormData();
 
-    Object.keys(form).forEach((key) => {
-      formData.append(key, form[key]);
-    });
+    formData.append("name", form.name);
+    formData.append("brand", form.brand);
+    formData.append("stock", Number(form.stock));
+    formData.append("category", form.category);
+    formData.append("description", form.description);
+    formData.append("image", form.image);
 
     await API.post("/products", formData, {
       headers: {
@@ -60,6 +63,8 @@ function AdminDashboard() {
     });
 
     alert("Product added successfully");
+
+    fetchProducts();
 
   } catch (error) {
 
