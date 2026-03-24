@@ -11,7 +11,7 @@ function AdminDashboard() {
   const [form, setForm] = useState({
     name: "",
     brand: "",
-    stock: "",
+    stock: Number(stock),
     category: "",
     description: "",
     image: null,
@@ -49,20 +49,9 @@ function AdminDashboard() {
 
     const formData = new FormData();
 
-    // append text fields
-    formData.append("name", form.name);
-    formData.append("brand", form.brand);
-    formData.append("stock", form.stock);
-    formData.append("category", form.category);
-    formData.append("description", form.description);
-
-    // ✅ append image separately
-    formData.append("image", form.image);
-
-    const token = localStorage.getItem("token");
-
-    console.log("TOKEN:", token);
-    console.log("IMAGE:", form.image);
+    Object.keys(form).forEach((key) => {
+      formData.append(key, form[key]);
+    });
 
     await API.post("/products", formData, {
       headers: {
@@ -74,12 +63,9 @@ function AdminDashboard() {
 
   } catch (error) {
 
-    console.log(
-      "ERROR:",
-      error.response?.data || error.message
-    );
-
+    console.log(error);
     alert("Error adding product");
+
   }
 };
 

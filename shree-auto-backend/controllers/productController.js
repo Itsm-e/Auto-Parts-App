@@ -3,6 +3,7 @@ const Product = require("../models/product");
 // Create Product
 exports.createProduct = async (req, res) => {
   try {
+
     console.log("BODY:", req.body);
     console.log("FILE:", req.file);
 
@@ -15,6 +16,8 @@ exports.createProduct = async (req, res) => {
     } = req.body;
 
     if (!req.file) {
+      console.log("NO FILE RECEIVED ❌");
+
       return res.status(400).json({
         message: "Image file missing"
       });
@@ -26,7 +29,7 @@ exports.createProduct = async (req, res) => {
       stock,
       category,
       description,
-      image: req.file.path   // Cloudinary URL
+      image: req.file.path
     });
 
     await product.save();
@@ -34,12 +37,14 @@ exports.createProduct = async (req, res) => {
     res.status(201).json(product);
 
   } catch (error) {
+
     console.error("CREATE PRODUCT ERROR:", error);
 
     res.status(500).json({
       message: "Product creation failed",
       error: error.message
     });
+
   }
 };
 
