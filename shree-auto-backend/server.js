@@ -35,7 +35,7 @@ console.log("ENV CHECK:");
 console.log("MONGO_URI:", process.env.MONGO_URI ? "FOUND" : "MISSING");
 console.log("CLOUD_NAME:", process.env.CLOUD_NAME ? "FOUND" : "MISSING");
 console.log("API_KEY:", process.env.API_KEY ? "FOUND" : "MISSING");
-console.log("SECRET:", process.env.CLOUDINARY_API_SECRET ? "FOUND" : "MISSING");
+console.log("SECRET:", process.env.API_SECRET ? "FOUND" : "MISSING");
 console.log("ALL ENV KEYS:");
 console.log(Object.keys(process.env));
 
