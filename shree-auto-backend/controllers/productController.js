@@ -4,6 +4,8 @@ const Product = require("../models/product");
 exports.createProduct = async (req, res) => {
   try {
 
+    console.log("=== CREATE PRODUCT START ===");
+
     console.log("BODY:", req.body);
     console.log("FILE:", req.file);
 
@@ -16,29 +18,36 @@ exports.createProduct = async (req, res) => {
     } = req.body;
 
     if (!req.file) {
-      console.log("NO FILE RECEIVED ❌");
+
+      console.log("❌ FILE NOT RECEIVED");
 
       return res.status(400).json({
         message: "Image file missing"
       });
+
     }
 
     const product = new Product({
       name,
       brand,
-      stock,
+      stock: Number(stock),
       category,
       description,
       image: req.file.path
     });
 
+    console.log("Saving product...");
+
     await product.save();
+
+    console.log("✅ PRODUCT SAVED");
 
     res.status(201).json(product);
 
   } catch (error) {
 
-    console.error("CREATE PRODUCT ERROR:", error);
+    console.error("❌ CREATE PRODUCT ERROR:");
+    console.error(error);
 
     res.status(500).json({
       message: "Product creation failed",
