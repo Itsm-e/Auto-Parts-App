@@ -44,7 +44,7 @@ function Products({ searchTerm }) {
         <div className="hero-overlay">
           <div className="hero-content">
 
-            <h1>Premium Accessories & Car Parts</h1>
+            <h1>Premium Accessories & Car Spare Parts</h1>
 
             <p>Quality automotive products for every journey</p>
 

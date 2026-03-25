@@ -16,9 +16,9 @@ function Navbar({ setSearchTerm }) {
   return (
     <div className="bg-black text-white sticky top-0 z-50 shadow-md">
     <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-    <h1 className="text-2xl font-bold tracking-wide">
-       \ō͡≡o˞̶  PARAS ENTERPRISE
-    </h1>
+    <link to="/"><h1 className="text-2xl font-bold tracking-wide">
+       \ō͡≡o˞̶  PARAS ENTERPRISES
+    </h1></link>
 
 
     <ul className="nav-links">
