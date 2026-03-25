@@ -8,6 +8,7 @@ import Register from "./pages/Register";
 import ProtectedRoute from "./components/ProtectedRoutes";
 import About from "./pages/About";
 
+
 function App() {
 
   const [searchTerm, setSearchTerm] = useState("");

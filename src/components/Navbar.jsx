@@ -3,6 +3,7 @@ import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import SearchIcon from "@mui/icons-material/Search";
 
+
 function Navbar({ setSearchTerm }) {
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
@@ -16,9 +17,9 @@ function Navbar({ setSearchTerm }) {
   return (
     <div className="bg-black text-white sticky top-0 z-50 shadow-md">
     <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-    <link to="/"><h1 className="text-2xl font-bold tracking-wide">
+    <Link to="/"><h1 className="text-2xl font-bold tracking-wide">
        \ō͡≡o˞̶  PARAS ENTERPRISES
-    </h1></link>
+    </h1></Link>
 
 
     <ul className="nav-links">
