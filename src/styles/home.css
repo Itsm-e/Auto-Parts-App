@@ -227,6 +227,20 @@
   margin-bottom: 8px;
 }
 
+.description-toggle {
+  border: none;
+  background: transparent;
+  color: #00c1ff;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 0;
+  margin-left: 4px;
+}
+
+.description-toggle:hover {
+  text-decoration: underline;
+}
+
 .stock {
   font-size: 12px;
   color: #25D366;

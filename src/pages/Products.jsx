@@ -5,6 +5,7 @@ import "../styles/home.css";
 function Products({ searchTerm }) {
 
   const [products, setProducts] = useState([]);
+  const [expandedProducts, setExpandedProducts] = useState({});
 
   useEffect(() => {
     fetchProducts();
@@ -82,7 +83,33 @@ function Products({ searchTerm }) {
                 <p className="brand">Brand: {product.brand}</p>
 
                 <p className="description">
-                  {product.description?.substring(0, 80)}...
+                  {(() => {
+                    const desc = product.description || "";
+                    const isExpanded = !!expandedProducts[product._id];
+                    const shouldTruncate = desc.length > 80;
+
+                    return (
+                      <>
+                        {isExpanded || !shouldTruncate
+                          ? desc
+                          : `${desc.substring(0, 80)}...`}
+                        {shouldTruncate && (
+                          <button
+                            type="button"
+                            onClick={() =>
+                              setExpandedProducts((prev) => ({
+                                ...prev,
+                                [product._id]: !prev[product._id],
+                              }))
+                            }
+                            className="description-toggle"
+                          >
+                            {isExpanded ? " show less" : " +more"}
+                          </button>
+                        )}
+                      </>
+                    );
+                  })()}
                 </p>
 
                 <p className="stock">
@@ -91,12 +118,12 @@ function Products({ searchTerm }) {
 
                 <div className="product-actions">
 
-                  <a href="tel:+919XXXXXXXXX" className="call-btn">
+                  <a href="tel:+918779847422" className="call-btn">
                     📞 Call for Price
                   </a>
 
                   <a
-                    href={`https://wa.me/919XXXXXXXXX?text=Hello I want inquiry about ${product.name}`}
+                    href={`https://wa.me/918779847422?text=Hello I want inquiry about ${product.name}`}
                     className="whatsapp-btn"
                     target="_blank"
                     rel="noopener noreferrer"
