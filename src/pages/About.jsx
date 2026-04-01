@@ -167,6 +167,24 @@ function About() {
 
       </section>
 
+      {/* LOCATION & CONTACT */}
+      <section className="location-section">
+
+        <h2>Visit Us</h2>
+
+        <div className="location-info">
+          <h3>Address</h3>
+          <p>Plot 55, Industrial Road No. 3, Electronic City, Bengaluru - 560100.</p>
+
+          <h3>Email</h3>
+          <p>support@parasenterprises.com</p>
+
+          <h3>Find Us on Google Maps</h3>
+          <a href="https://www.google.com/maps/place/Electronic+City,+Bengaluru,+Karnataka" target="_blank" rel="noopener noreferrer">View Location</a>
+        </div>
+
+      </section>
+
     </div>
   );
 }
