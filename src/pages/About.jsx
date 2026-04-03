@@ -174,13 +174,13 @@ function About() {
 
         <div className="location-info">
           <h3>Address</h3>
-          <p>Plot 55, Industrial Road No. 3, Electronic City, Bengaluru - 560100.</p>
+          <p>Shop No.6, Prathamesh Pooja, BMC Shopping Complex, Opp. Kastur Park Ganesh Mandir, TPS Road, Borivali(W), Mumbai-400 092.</p>
 
           <h3>Email</h3>
-          <p>support@parasenterprises.com</p>
+          <p>parascarhub@gmail.com</p>
 
           <h3>Find Us on Google Maps</h3>
-          <a href="https://www.google.com/maps/place/Electronic+City,+Bengaluru,+Karnataka" target="_blank" rel="noopener noreferrer">View Location</a>
+          <a href="https://share.google/O60IBZfXhKOT6jidC" target="_blank" rel="noopener noreferrer">View Location</a>
         </div>
 
       </section>
